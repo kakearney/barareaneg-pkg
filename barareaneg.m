@@ -11,11 +11,12 @@ function h = barareaneg(x, y, type, orient)
 % Input variables:
 %
 %   x:      vector of x coordinates of each bar or point (always refers to
-%           independant variable)
+%           independant variable, regardless of orientation)
 %
 %   y:      nx x nstack values to be plotted.  Each column represents a
-%           stacked box/patch in.  Columns must be either entirely positive
-%           or negative.  (always refers to dependant variable)
+%           stacked box/patch in.  For area option, columns must be either 
+%           entirely positive or negative.  (always refers to dependant
+%           variable, regardless of orientation)
 %
 %   type:   'bar' or 'area' (default 'bar')
 %

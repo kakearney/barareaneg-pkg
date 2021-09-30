@@ -1,0 +1,224 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>barareaneg.m: bar or area plot with positive/negative split</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-09-30"><meta name="DC.source" content="./readmeExtras/README.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>barareaneg.m</tt>: bar or area plot with positive/negative split</h1><!--introduction--><p>Author: Kelly Kearney</p><p>This repository includes the code for the <tt>barareaneg.m</tt> Matlab function, along with all dependent functions required to run it.</p><p>Matlab's native stacked bar and area plots don't really make sense when you need to visualize both positive and negative data.  This function instead separates out always-postive and always-negative series, and plots them in opposite-facing bar/area plots.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Getting started</a></li><li><a href="#2">Syntax</a></li><li><a href="#3">Description</a></li><li><a href="#4">Examples</a></li><li><a href="#7">Contributions</a></li></ul></div><h2 id="1">Getting started</h2><p><b>Prerequisites</b></p><p>This function requires Matlab R14 or later.</p><p><b>Downloading and installation</b></p><p>This code can be downloaded from <a href="https://github.com/kakearney/barareaneg-pkg/">Github</a> or the <a href="http://www.mathworks.com/matlabcentral/fileexchange/xxxx-example">MatlabCentral File Exchange</a>.  The File Exchange entry is updated daily from the GitHub repository.</p><p><b>Matlab Search Path</b></p><p>The following folders need to be added to your Matlab Search path (via <tt>addpath</tt>, <tt>pathtool</tt>, etc.):</p><pre class="language-matlab">barareaneg-pkg/barareaneg
+</pre><h2 id="2">Syntax</h2><p>h = barareaneg(x, y, type) h = barareaneg(x, y, type, orient)</p><h2 id="3">Description</h2><p><tt>h = barareaneg(x, y, type)</tt> creates either a stacked bar (<tt>type</tt> = 'bar') or stacked area (<tt>type</tt> = 'area') plot, where the vector <tt>x</tt> indicates the coordinates of the independent variable and the matrix <tt>y</tt> indicates the values of to be stacked; rows of <tt>y</tt> correspond to <tt>x</tt>, and columns indicate values to be stacked.  The output <tt>h</tt> is a structure with handles to the plotted objects.</p><p><tt>h = barareaneg(x, y, type, orient)</tt> indicates whether bars/areas should stack vertically (<tt>orient</tt> = <tt>'v'</tt>) or horizontally (<tt>orient</tt> = <tt>'h'</tt>).</p><h2 id="4">Examples</h2><p>We start with stacked data that includes 3 all-positive series and 2 all-negative ones.</p><pre class="codeinput">rng(1); <span class="comment">% for replicability only</span>
+
+x = 1:10;
+y = rand(10,5);
+y(:, [3 5]) = y(:, [3 5])*-1;
+</pre><p>Matlab's native bar plots display stacked negative data in a cumulative way, such that the blocks that change sign from the previous one overlay each other.  The <tt>barareaneg</tt> function instead splits the postivie and negative, which may be a more desirable way to display data, depending on the application.</p><pre class="codeinput">col = get(0, <span class="string">'DefaultAxesColorOrder'</span>);
+col = num2cell(col(1:5,:),2);
+
+figure;
+ax(1) = subplot(1,2,1);
+hb = bar(x,y,<span class="string">'stacked'</span>);
+title(<span class="string">'bar'</span>);
+set(hb, {<span class="string">'facecolor'</span>}, col);
+
+ax(2) = subplot(1,2,2);
+h = barareaneg(x,y,<span class="string">'bar'</span>);
+title(<span class="string">'barareaneg'</span>);
+set(h.pos, {<span class="string">'facecolor'</span>}, col);
+set(h.neg, {<span class="string">'facecolor'</span>}, col);
+set(ax, <span class="string">'ylim'</span>, [-2 2]);
+</pre><img vspace="5" hspace="5" src="./readmeExtras/README_01.png" alt=""> <p>The same behavior is seen in stacked area plots.</p><pre class="codeinput">figure;
+ax(1) = subplot(1,2,1);
+ha = area(x,y);
+title(<span class="string">'area'</span>);
+set(ha, {<span class="string">'facecolor'</span>}, col);
+
+ax(2) = subplot(1,2,2);
+h = barareaneg(x,y,<span class="string">'area'</span>);
+title(<span class="string">'barareaneg'</span>);
+set(h.pos, {<span class="string">'facecolor'</span>}, col);
+set(h.neg, {<span class="string">'facecolor'</span>}, col);
+set(ax, <span class="string">'ylim'</span>, [-2 2], <span class="string">'xlim'</span>, [1 10]);
+</pre><img vspace="5" hspace="5" src="./readmeExtras/README_02.png" alt=""> <h2 id="7">Contributions</h2><p>Community contributions to this package are welcome!</p><p>To report bugs, please submit <a href="https://github.com/kakearney/barareaneg-pkg/issues">an issue</a> on GitHub and include:</p><div><ul><li>your operating system</li><li>your version of Matlab and all relevant toolboxes (type <tt>ver</tt> at the Matlab command line to get this info)</li><li>code/data to reproduce the error or buggy behavior, and the full text of any error messages received</li></ul></div><p>Please also feel free to submit enhancement requests, or to send pull requests (via GitHub) for bug fixes or new features.</p><p>I do monitor the MatlabCentral FileExchange entry for any issues raised in the comments, but would prefer to track issues on GitHub.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |barareaneg.m|: bar or area plot with positive/negative split
+% Author: Kelly Kearney
+%
+% This repository includes the code for the |barareaneg.m| Matlab function,
+% along with all dependent functions required to run it. 
+%
+% Matlab's native stacked bar and area plots don't really make sense when
+% you need to visualize both positive and negative data.  This function
+% instead separates out always-postive and always-negative series, and
+% plots them in opposite-facing bar/area plots.
+%
+%% Getting started
+%
+% *Prerequisites*
+%
+% This function requires Matlab R14 or later.
+%
+% *Downloading and installation*
+%
+% This code can be downloaded from <https://github.com/kakearney/barareaneg-pkg/ Github>
+% or the
+% <http://www.mathworks.com/matlabcentral/fileexchange/xxxx-example
+% MatlabCentral File Exchange>.  The File Exchange entry is updated daily
+% from the GitHub repository.   
+%
+% *Matlab Search Path*
+%
+% The following folders need to be added to your Matlab Search path (via
+% |addpath|, |pathtool|, etc.):
+%
+%   barareaneg-pkg/barareaneg
+
+%% Syntax
+%
+% h = barareaneg(x, y, type)
+% h = barareaneg(x, y, type, orient)
+%
+%% Description
+%
+% |h = barareaneg(x, y, type)| creates either a stacked bar (|type| =
+% 'bar') or stacked area (|type| = 'area') plot, where the vector |x|
+% indicates the coordinates of the independent variable and the matrix |y|
+% indicates the values of to be stacked; rows of |y| correspond to |x|, and
+% columns indicate values to be stacked.  The output |h| is a structure
+% with handles to the plotted objects.
+%
+% |h = barareaneg(x, y, type, orient)| indicates whether bars/areas should
+% stack vertically (|orient| = |'v'|) or horizontally (|orient| = |'h'|).
+
+%% Examples
+%
+% We start with stacked data that includes 3 all-positive series and 2
+% all-negative ones.
+
+rng(1); % for replicability only
+
+x = 1:10;
+y = rand(10,5);
+y(:, [3 5]) = y(:, [3 5])*-1;
+
+%% 
+% Matlab's native bar plots display stacked negative data in a cumulative
+% way, such that the blocks that change sign from the previous one overlay
+% each other.  The |barareaneg| function instead splits the postivie and
+% negative, which may be a more desirable way to display data, depending on
+% the application.
+
+col = get(0, 'DefaultAxesColorOrder');
+col = num2cell(col(1:5,:),2);
+
+figure;
+ax(1) = subplot(1,2,1);
+hb = bar(x,y,'stacked');
+title('bar');
+set(hb, {'facecolor'}, col);
+
+ax(2) = subplot(1,2,2);
+h = barareaneg(x,y,'bar');
+title('barareaneg');
+set(h.pos, {'facecolor'}, col);
+set(h.neg, {'facecolor'}, col);
+set(ax, 'ylim', [-2 2]);
+
+%%
+% The same behavior is seen in stacked area plots.
+
+figure;
+ax(1) = subplot(1,2,1);
+ha = area(x,y);
+title('area');
+set(ha, {'facecolor'}, col);
+
+ax(2) = subplot(1,2,2);
+h = barareaneg(x,y,'area');
+title('barareaneg');
+set(h.pos, {'facecolor'}, col);
+set(h.neg, {'facecolor'}, col);
+set(ax, 'ylim', [-2 2], 'xlim', [1 10]);
+
+%% Contributions
+%
+% Community contributions to this package are welcome!
+% 
+% To report bugs, please submit
+% <https://github.com/kakearney/barareaneg-pkg/issues an issue> on GitHub and
+% include:  
+% 
+% * your operating system
+% * your version of Matlab and all relevant toolboxes (type |ver| at the Matlab command line to get this info)  
+% * code/data to reproduce the error or buggy behavior, and the full text of any error messages received 
+% 
+% Please also feel free to submit enhancement requests, or to send pull
+% requests (via GitHub) for bug fixes or new features. 
+% 
+% I do monitor the MatlabCentral FileExchange entry for any issues raised
+% in the comments, but would prefer to track issues on GitHub. 
+% 
+
+
+##### SOURCE END #####
+--></body></html>

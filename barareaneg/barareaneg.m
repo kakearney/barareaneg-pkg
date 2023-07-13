@@ -102,6 +102,7 @@ if strcmp(type, 'bar')
         hold on;
         h.neg = bar(x, yneg, 'stacked');
         h.sum = bar(x, ysum, 'facecolor', 'none', 'edgecolor', [.5 .5 .5]);
+%         h.sum2 = stairs([x-h.neg(1).BarWidth/2; x(end)+h.neg(1).BarWidth/2], [ysum; ysum(end)], 'color', [.5 .5 .5]);
     else
         h.pos = barh(x, ypos, 'stacked');
         hold on;
